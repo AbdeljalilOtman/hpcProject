@@ -1,33 +1,43 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, Input, Output
+from frontend import get_layout  # Import the layout from the frontend module
+from backend import Connector  # Import the backend connector
 
-app = Dash(__name__)
-cluster_data = {
-    "partition1": {"CPUs": 128, "GPUs": 8},
-    "partition2": {"CPUs": 64, "GPUs": 4},
-    "partition3": {"CPUs": 32, "GPUs": 2},
-    "partition4": {"CPUs": 256, "GPUs": 16},
-    "partition5": {"CPUs": 0, "GPUs": 0},  # Represents an inactive partition
-}
+class DashApp:
+    def __init__(self, app):
+        self.app = app
+        self.connector = Connector()
+        self.partitions = ['defq', 'gpu', 'shortq', 'longq', 'visu', 'special']
+        self.setup_layout()
+        self.setup_callbacks()
 
-app.layout = html.Div([
-    html.H1("Cluster Partition Resource Manager"),
-    dcc.Dropdown(
-        id='partition-dropdown',
-        options=[{'label': p, 'value': p} for p in cluster_data.keys()],
-        placeholder="Select a partition"
-    ),
-    html.Div(id='resource-display', style={'marginTop': '20px'})
-])
+    def setup_layout(self):
+        """Define the layout of the Dash app."""
+        self.app.layout = get_layout(self.partitions)  # Use the layout from the frontend
 
-@app.callback(
-    Output('resource-display', 'children'),
-    Input('partition-dropdown', 'value')
-)
-def update_resources(partition):
-    if partition:
-        resources = cluster_data[partition]
-        return f"Available CPUs: {resources['CPUs']}, GPUs: {resources['GPUs']}"
-    return "Select a partition to view resources."
+    def setup_callbacks(self):
+        """Set up the callbacks to update the UI based on user input."""
+        @self.app.callback(
+            [Output("cpu-output", "children"),
+             Output("gpu-output", "children")],
+            [Input("partition-dropdown", "value")]
+        )
+        def update_resources(selected_partition):
+            if not selected_partition:
+                return "Available CPUs: -", "Available GPUs: -"
 
-if __name__ == '__main__':
+            # Fetch resource details for the selected partition
+            partition_data = self.connector.get_resources(selected_partition)
+            if partition_data:
+                return (
+                    f"Available CPUs: {partition_data[0]}",
+                    f"Available GPUs: {partition_data[1]}"
+                )
+            else:
+                return "Failed to retrieve CPUs", "Failed to retrieve GPUs"
+
+# Create Dash app and run
+if __name__ == "__main__":
+    app = Dash(__name__)
+    DashApp(app)  # Initialize the DashApp
     app.run_server(debug=True)
+    

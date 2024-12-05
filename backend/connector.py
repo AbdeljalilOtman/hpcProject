@@ -1,15 +1,5 @@
 import paramiko
-from tools import read_properties_file
-
-class CredentialsManager:
-    def __init__(self):
-        self.__credentials = read_properties_file("Connector/credentials.properties")
-
-    def get_username(self):
-        return self.__credentials.get('simlab.username')
-
-    def get_password(self):
-        return self.__credentials.get('simlab.password')
+from .credentials_manager import CredentialsManager
 
 class Connector:
     __instance = None
@@ -23,19 +13,20 @@ class Connector:
             self.__SIMLAB_HOST = 'simlab-cluster.um6p.ma'
             self.__credentials_manager = CredentialsManager()
             self.__initialized = True
+            self.__client = paramiko.SSHClient()
+
 
     def __execute_command(self, command):
         SIMLAB_USERNAME = self.__credentials_manager.get_username()
         SIMLAB_PASSWORD = self.__credentials_manager.get_password()
+        client = self.__client
         try:
-            client = paramiko.SSHClient()
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             client.connect(self.__SIMLAB_HOST, username=SIMLAB_USERNAME, password=SIMLAB_PASSWORD)
 
             stdin, stdout, stderr = client.exec_command(command)
             output = stdout.read().decode()
             error = stderr.read().decode()
-            client.close()
 
             if error:
                 print(f"Error: {error}")
@@ -46,13 +37,17 @@ class Connector:
             return None
 
     def get_resources(self, partition):
-        return self.__execute_command(f"cd project && ./proj.sh {partition}")
+        output = self.__execute_command(f"cd project && ./proj.sh {partition}")
+        out = output.split(",")
+        return tuple(map(int, out))
+    def close(self):
+        self.__client.close()
+
 
 
 if __name__ == "__main__":
     connector = Connector()
     output = connector.get_resources("special")
-    print(output)
 
 
 
