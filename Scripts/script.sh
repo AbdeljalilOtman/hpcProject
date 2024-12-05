@@ -1,4 +1,4 @@
-
+#!/bin/bash
 part=$1
 
 totalCpus=0
