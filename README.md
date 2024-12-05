@@ -25,15 +25,7 @@ your_project/
 │   ├── credentials_manager.py# Handles credentials management for data retrieval
 └── scripts/                  # Shell scripts and other automation
     ├── script.sh             # Script for running the app or setup tasks
-    └── proj.sh               # Project-specific shell script (copy content from script.sh)
 ```
-
-- **`app.py`**: This file contains the main application logic, integrates the frontend layout with the backend, and runs the server.
-- **`frontend/app_layout.py`**: Contains the layout and UI components, separated from the backend logic.
-- **`frontend/assets/styles.css`**: Custom styles for the app's frontend UI.
-- **`backend/connector.py`**: Handles resource data retrieval for the selected partition.
-- **`backend/credentials_manager.py`**: Manages credentials for accessing resources securely.
-- **`scripts/script.sh`**
 
 
 
