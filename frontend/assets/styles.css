@@ -1,89 +1,83 @@
-/* Apply a gradient background to the body */
+/* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Calibri' ; 
     background: linear-gradient(135deg, #f9f9f9 30%, #00c6ff 100%);
     margin: 0;
     padding: 0;
     color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Center the title and make it pop */
+/* Header Styles */
 h1 {
     color: #fff;
     text-align: center;
-    margin-top: 30px;
+    margin: 20px 0;
     font-size: 36px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Style for the labels to make them stand out */
-label {
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 10px;
-    display: block;
-    color: #333;
-}
-
-/* Style the dropdown container with a shadow effect */
-#partition-dropdown {
-    margin-bottom: 20px;
+/* Dropdown Container */
+#partition-dropdown-container {
+    margin: 0 auto 30px auto;
+    padding: 20px;
     width: 80%;
     max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Make the partition details section stand out */
-h3 {
-    color: #00c6ff;
-    text-align: center;
-    font-size: 24px;
-}
-
-/* Add some padding and spacing for text content */
-p {
-    font-size: 18px;
-    color: #333;
-    text-align: center;
-    margin-top: 10px;
-}
-
-/* Add some styling to divs for an elevated look */
-div[style] {
+    background-color: #fff;
     border: 2px solid #ddd;
     border-radius: 8px;
-    background-color: #fff;
-    padding: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
     transition: all 0.3s ease-in-out;
 }
 
-/* Hover effect for divs */
-div[style]:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Add a subtle color transition to the dropdown */
+/* Dropdown Element */
 #partition-dropdown select {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
     background-color: #00c6ff;
     color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    border: none;
-    width: 100%;
     transition: background-color 0.3s ease;
 }
 
-/* Change background color of dropdown on hover */
 #partition-dropdown select:hover {
     background-color: #0077b6;
 }
 
-/* Make the button appear stylish */
+/* Partition Details Section */
+#partition-details {
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+h3 {
+    color: #00c6ff;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Buttons */
 button {
     background-color: #00c6ff;
     color: white;
@@ -95,12 +89,12 @@ button {
     transition: background-color 0.3s ease;
 }
 
-/* Change button color on hover */
 button:hover {
     background-color: #0077b6;
 }
 
-/* Add a box shadow to the dropdown */
-#partition-dropdown select {
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+/* Div Hover Effect */
+div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
