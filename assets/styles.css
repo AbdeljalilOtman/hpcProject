@@ -1,10 +1,10 @@
 /* General Styles */
 body {
-    font-family: 'Calibri' ; 
-    background: linear-gradient(135deg, #f9f9f9 30%, #00c6ff 100%);
+    font-family: 'Calibri'; 
+    background: linear-gradient(135deg, #302f2f 30%, #ff6600 100%);  /* Black and Orange Gradient */
     margin: 0;
     padding: 0;
-    color: #333;
+    color: #121111;  /* White text for contrast */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -14,11 +14,12 @@ body {
 
 /* Header Styles */
 h1 {
-    color: #fff;
+    font-family: 'Calibri'; 
+    color: #ff6600;  /* Orange color for header */
     text-align: center;
     margin: 20px 0;
     font-size: 36px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);  /* Slight black shadow for emphasis */
 }
 
 /* Dropdown Container */
@@ -28,7 +29,7 @@ h1 {
     width: 80%;
     max-width: 400px;
     background-color: #fff;
-    border: 2px solid #ddd;
+    border: 2px solid #333;  /* Black border */
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
@@ -42,13 +43,13 @@ h1 {
     width: 100%;
     font-size: 16px;
     padding: 10px;
-    background-color: #00c6ff;
-    color: #fff;
+    background-color: #ff6600;  /* Orange background */
+    color: #1e1d1d;  /* White text */
     transition: background-color 0.3s ease;
 }
 
 #partition-dropdown select:hover {
-    background-color: #0077b6;
+    background-color: #cc5200;  /* Darker orange on hover */
 }
 
 /* Partition Details Section */
@@ -58,7 +59,7 @@ h1 {
     width: 80%;
     max-width: 600px;
     background-color: #fff;
-    border: 2px solid #ddd;
+    border: 2px solid #333;  /* Black border */
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -66,20 +67,20 @@ h1 {
 }
 
 h3 {
-    color: #00c6ff;
+    color: #ff6600;  /* Orange color for sub-headings */
     font-size: 24px;
     margin-bottom: 10px;
 }
 
 p {
     font-size: 18px;
-    color: #333;
+    color: #333;  /* Black color for text */
     margin: 10px 0;
 }
 
 /* Buttons */
 button {
-    background-color: #00c6ff;
+    background-color: #ff6600;  /* Orange background */
     color: white;
     padding: 10px 20px;
     border-radius: 8px;
@@ -90,11 +91,5 @@ button {
 }
 
 button:hover {
-    background-color: #0077b6;
-}
-
-/* Div Hover Effect */
-div:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background-color: #cc5200;  /* Darker orange on hover */
 }

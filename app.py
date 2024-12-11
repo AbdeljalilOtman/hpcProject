@@ -1,4 +1,4 @@
-from dash import Dash, Input, Output
+from dash import Dash, Input, Output, dcc, html
 from frontend import get_layout  # Import the layout from the frontend module
 from backend import Connector  # Import the backend connector
 
@@ -12,7 +12,8 @@ class DashApp:
 
     def setup_layout(self):
         """Define the layout of the Dash app."""
-        self.app.layout = get_layout(self.partitions)  # Use the layout from the frontend
+        # Layout with loading component around outputs
+        self.app.layout = get_layout(self.partitions)
 
     def setup_callbacks(self):
         """Set up the callbacks to update the UI based on user input."""
@@ -40,4 +41,3 @@ if __name__ == "__main__":
     app = Dash(__name__)
     DashApp(app)  # Initialize the DashApp
     app.run_server(debug=True)
-    
