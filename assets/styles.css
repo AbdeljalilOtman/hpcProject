@@ -1,0 +1,182 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+}
+
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F4F4F4; /* Light Gray */
+    color: #333333; /* Primary text color */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body fills viewport height */
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    background-color: #D65127; /* UM6P Orange */
+    color: #FFFFFF;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+header img {
+    height: 50px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Content Area */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+/* Dropdown Container */
+#partition-dropdown-container {
+    margin: 20px auto 50px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    background-color: #FFFFFF; /* White background */
+    border: 2px solid #D65127; /* Orange border */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#partition-dropdown select {
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    background-color: #F4F4F4; /* Light gray */
+    color: #333333;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+#partition-dropdown select:focus {
+    outline: none;
+    border-color: #D65127; /* Highlight on focus */
+}
+
+/* Partition Details Section */
+#partition-details {
+    margin: 40px auto;
+    padding: 20px;
+    width: 100%;
+    gap: 20px;
+    min-width: 500px;
+    background-color: #FFFFFF; /* White */
+    border: 2px solid #D65127; /* Orange border */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: #000000; /* Black footer */
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+footer img {
+    height: 50px; /* Logo height */
+    margin-bottom: 10px; /* Space below logo */
+}
+
+footer a {
+    color: #D65127; /* UM6P Orange */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-size: 16px;
+}
+
+footer a:hover {
+    color: #FF7043; /* Lighter Orange */
+    text-decoration: underline;
+}
+
+/* Buttons */
+button {
+    background-color: #D65127; /* UM6P Orange */
+    color: #FFFFFF; /* White text */
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #B84121; /* Darker Orange */
+    transform: translateY(-2px); /* Slight hover effect */
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #FF7043; /* Highlight button on focus */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 32px;
+    }
+
+    #partition-dropdown-container,
+    #partition-details {
+        width: 90%;
+        padding: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
