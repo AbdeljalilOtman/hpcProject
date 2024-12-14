@@ -38,6 +38,6 @@ class DashApp:
 
 # Create Dash app and run
 if __name__ == "__main__":
-    app = Dash(__name__)
+    app = Dash(__name__, external_stylesheets=["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"])
     DashApp(app)  # Initialize the DashApp
     app.run_server(debug=False)
