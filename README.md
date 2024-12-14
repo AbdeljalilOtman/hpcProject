@@ -27,6 +27,10 @@ your_project/
     ├── script.sh             # Script for running the app or setup tasks
 ```
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> d0e3c1ace211b9177d0ec338bf1e6d2584bfcde1
 
 
 ## Setup Instructions

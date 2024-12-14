@@ -1,104 +1,99 @@
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif; 
-    background: linear-gradient(135deg, #2c3e50 30%, #ec6f66 100%); /* Dark Blue to Red Gradient */
+    font-family: 'Calibri'; 
+    background: linear-gradient(135deg, #302f2f 30%, #ff6600 100%);  /* Black and Orange Gradient */
     margin: 0;
     padding: 0;
-    color: #ffffff; /* White text for contrast */
+    color: #121111;  /* White text for contrast */
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
 
-.app-container {
-    width: 90%;
-    max-width: 1200px;
-    background: #f4f4f9; /* Light Grey Background */
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    color: #333; /* Dark text */
-}
-
-/* Header Section */
-.header {
+/* Header Styles */
+h1 {
+    font-family: 'Calibri'; 
+    color: #ff6600;  /* Orange color for header */
     text-align: center;
-    margin-bottom: 20px;
-}
-
-.header-title {
-    font-size: 2.5rem;
-    color: #ec6f66; /* Red Color */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Dropdown Section */
-.dropdown-container {
     margin: 20px 0;
+    font-size: 36px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);  /* Slight black shadow for emphasis */
+}
+
+/* Dropdown Container */
+#partition-dropdown-container {
+    margin: 0 auto 30px auto;
     padding: 20px;
-    background: #ffffff;
-    border: 1px solid #dcdde1;
+    width: 80%;
+    max-width: 400px;
+    background-color: #fff;
+    border: 2px solid #333;  /* Black border */
     border-radius: 8px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
-.dropdown-label {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.dropdown {
+/* Dropdown Element */
+#partition-dropdown select {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
     width: 100%;
+    font-size: 16px;
     padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #dcdde1;
-    border-radius: 6px;
-    background: #ecf0f1; /* Light background for dropdown */
-    color: #333;
+    background-color: #ff6600;  /* Orange background */
+    color: #1e1d1d;  /* White text */
+    transition: background-color 0.3s ease;
 }
 
-/* Details Section */
-.details-container {
+#partition-dropdown select:hover {
+    background-color: #cc5200;  /* Darker orange on hover */
+}
+
+/* Partition Details Section */
+#partition-details {
+    margin: 0 auto;
     padding: 20px;
-    background: #ffffff;
-    border: 1px solid #dcdde1;
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    border: 2px solid #333;  /* Black border */
     border-radius: 8px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.details-header {
-    font-size: 1.5rem;
-    color: #ec6f66; /* Red Color */
-    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: all 0.3s ease-in-out;
 }
 
-.details-text {
-    font-size: 1rem;
-    color: #333;
+h3 {
+    color: #ff6600;  /* Orange color for sub-headings */
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #333;  /* Black color for text */
     margin: 10px 0;
 }
 
 /* Buttons (optional styling if needed) */
 button {
-    background-color: #ec6f66;
+    background-color: #ff6600;  /* Orange background */
     color: white;
     padding: 10px 20px;
+    border-radius: 8px;
     border: none;
     border-radius: 6px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
 }
 
 button:hover {
-    background-color: #e74c3c;
-}
-.dash-spinner {
-    color: #ec6f66 !important; /* Set the spinner color */
+    background-color: #cc5200;  /* Darker orange on hover */
 }
 
 .dash-loading > .dash-spinner {
