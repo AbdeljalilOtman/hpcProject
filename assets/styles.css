@@ -1,95 +1,106 @@
 /* General Styles */
 body {
-    font-family: 'Calibri'; 
-    background: linear-gradient(135deg, #302f2f 30%, #ff6600 100%);  /* Black and Orange Gradient */
+    font-family: 'Arial', sans-serif; 
+    background: linear-gradient(135deg, #2c3e50 30%, #ec6f66 100%); /* Dark Blue to Red Gradient */
     margin: 0;
     padding: 0;
-    color: #121111;  /* White text for contrast */
-    min-height: 100vh;
+    color: #ffffff; /* White text for contrast */
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 
-/* Header Styles */
-h1 {
-    font-family: 'Calibri'; 
-    color: #ff6600;  /* Orange color for header */
+.app-container {
+    width: 90%;
+    max-width: 1200px;
+    background: #f4f4f9; /* Light Grey Background */
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    color: #333; /* Dark text */
+}
+
+/* Header Section */
+.header {
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.header-title {
+    font-size: 2.5rem;
+    color: #ec6f66; /* Red Color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Dropdown Section */
+.dropdown-container {
     margin: 20px 0;
-    font-size: 36px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);  /* Slight black shadow for emphasis */
-}
-
-/* Dropdown Container */
-#partition-dropdown-container {
-    margin: 0 auto 30px auto;
     padding: 20px;
-    width: 80%;
-    max-width: 400px;
-    background-color: #fff;
-    border: 2px solid #333;  /* Black border */
+    background: #ffffff;
+    border: 1px solid #dcdde1;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Dropdown Element */
-#partition-dropdown select {
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    border: none;
-    border-radius: 8px;
-    width: 100%;
-    font-size: 16px;
-    padding: 10px;
-    background-color: #ff6600;  /* Orange background */
-    color: #1e1d1d;  /* White text */
-    transition: background-color 0.3s ease;
-}
-
-#partition-dropdown select:hover {
-    background-color: #cc5200;  /* Darker orange on hover */
-}
-
-/* Partition Details Section */
-#partition-details {
-    margin: 0 auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 600px;
-    background-color: #fff;
-    border: 2px solid #333;  /* Black border */
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: all 0.3s ease-in-out;
-}
-
-h3 {
-    color: #ff6600;  /* Orange color for sub-headings */
-    font-size: 24px;
+.dropdown-label {
+    font-size: 1rem;
+    color: #333;
     margin-bottom: 10px;
+    display: block;
 }
 
-p {
-    font-size: 18px;
-    color: #333;  /* Black color for text */
+.dropdown {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #dcdde1;
+    border-radius: 6px;
+    background: #ecf0f1; /* Light background for dropdown */
+    color: #333;
+}
+
+/* Details Section */
+.details-container {
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #dcdde1;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.details-header {
+    font-size: 1.5rem;
+    color: #ec6f66; /* Red Color */
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.details-text {
+    font-size: 1rem;
+    color: #333;
     margin: 10px 0;
 }
 
-/* Buttons */
+/* Buttons (optional styling if needed) */
 button {
-    background-color: #ff6600;  /* Orange background */
+    background-color: #ec6f66;
     color: white;
     padding: 10px 20px;
-    border-radius: 8px;
     border: none;
-    font-size: 16px;
+    border-radius: 6px;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #cc5200;  /* Darker orange on hover */
+    background-color: #e74c3c;
+}
+.dash-spinner {
+    color: #ec6f66 !important; /* Set the spinner color */
+}
+
+.dash-loading > .dash-spinner {
+    margin: 20px auto;
 }

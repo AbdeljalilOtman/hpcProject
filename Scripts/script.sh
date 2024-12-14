@@ -8,12 +8,12 @@ info=$(sinfo -p $part --format="%G %C %T" | grep -E "idle|mixed")
 
 while IFS= read -r line; do
     gres=$(echo "$line" | awk '{print $1}')
-    cpus=$(echo "$line" | awk '{split($2, a, "/"); print a[2]}') 
-    
+    cpus=$(echo "$line" | awk '{split($2, a, "/"); print a[2]}')
+
     if [[ "$gres" =~ gpu:([0-9]+) ]]; then
-        gpus=${BASH_REMATCH[1]}  
+        gpus=${BASH_REMATCH[1]}
     else
-        gpus=0  
+        gpus=0
     fi
 
     totalCpus=$((totalCpus + cpus))
@@ -21,4 +21,5 @@ while IFS= read -r line; do
 
 done <<< "$info"
 
-echo "Total available CPUs: $totalCpus, Total available GPUs: $totalGpus"
+echo "$totalCpus,$totalGpus"
+
