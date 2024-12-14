@@ -1,101 +1,193 @@
-/* General Styles */
-body {
-    font-family: 'Calibri'; 
-    background: linear-gradient(135deg, #302f2f 30%, #ff6600 100%);  /* Black and Orange Gradient */
+/* General Reset */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: #121111;  /* White text for contrast */
-    min-height: 100vh;
+}
+
+html, body {
+    width: 100%;
+}
+
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F4F4F4;
+    color: #333333;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    min-height: 100vh;
+    line-height: 1.6;
 }
 
 /* Header Styles */
-h1 {
-    font-family: 'Calibri'; 
-    color: #ff6600;  /* Orange color for header */
-    text-align: center;
-    margin: 20px 0;
-    font-size: 36px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);  /* Slight black shadow for emphasis */
-}
-
-/* Dropdown Container */
-#partition-dropdown-container {
-    margin: 0 auto 30px auto;
+header {
+    background-color: #D65127;
+    color: #FFFFFF;
     padding: 20px;
-    width: 80%;
-    max-width: 400px;
-    background-color: #fff;
-    border: 2px solid #333;  /* Black border */
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
-/* Dropdown Element */
-#partition-dropdown select {
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+header img {
+    height: 50px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Content Area */
+main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+}
+
+/* Flex container for dropdown and partition details */
+.content-flex-container {
+    display: flex;
+    justify-content: space-between; /* Aligns items with space between */
+    align-items: flex-start; /* Align items to the top */
+    max-width: 1200px; /* Maximum width for the content */
+    width: 100%; /* Full width inside the max-width */
+}
+
+/* Left section (Dropdown) */
+.partition-dropdown-container {
+    flex: 0 1 300px; /* Fixed width for the dropdown */
+    padding: 20px;
+    background-color: #FFFFFF;
+    border: 2px solid #D65127;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.partition-dropdown select {
     border: none;
     border-radius: 8px;
     width: 100%;
     font-size: 16px;
-    padding: 10px;
-    background-color: #ff6600;  /* Orange background */
-    color: #1e1d1d;  /* White text */
-    transition: background-color 0.3s ease;
+    padding: 12px;
+    background-color: #F4F4F4;
+    color: #333333;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
 }
 
-#partition-dropdown select:hover {
-    background-color: #cc5200;  /* Darker orange on hover */
+.partition-dropdown select:focus {
+    outline: none;
+    border-color: #D65127;
 }
 
-/* Partition Details Section */
-#partition-details {
-    margin: 0 auto;
+/* Right section (Partition Details) */
+.partition-details {
+    flex: 1; /* Takes the remaining space */
     padding: 20px;
-    width: 80%;
-    max-width: 600px;
-    background-color: #fff;
-    border: 2px solid #333;  /* Black border */
+    background-color: #F9F9F9;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-h3 {
-    color: #ff6600;  /* Orange color for sub-headings */
-    font-size: 24px;
+.partition-details h3 {
+    color: #D65127;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.partition-details .item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.partition-details img {
+    height: 50px; /* Increased icon size */
+}
+
+.partition-details p {
+    font-size: 16px;
+    color: #333333;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 10px; /* Reduced padding */
+    text-align: center;
+    font-size: 12px; /* Reduced font size */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    width: 100%; /* Ensure footer spans the entire width */
+}
+
+footer img {
+    height: 40px; /* Slightly reduced logo size */
     margin-bottom: 10px;
 }
 
-p {
-    font-size: 18px;
-    color: #333;  /* Black color for text */
-    margin: 10px 0;
+footer p {
+    margin: 5px 0;
+    font-size: 12px; /* Smaller text */
 }
 
-/* Buttons (optional styling if needed) */
-button {
-    background-color: #ff6600;  /* Orange background */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 20px;
+footer a {
+    text-decoration: none;
+    color: #FFFFFF;
+    transition: color 0.3s ease;
 }
 
-button:hover {
-    background-color: #cc5200;  /* Darker orange on hover */
+footer a:hover {
+    color: #FF7043;
+    text-decoration: underline;
 }
 
-.dash-loading > .dash-spinner {
-    margin: 20px auto;
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 32px;
+    }
+
+    .content-flex-container {
+        flex-direction: column; /* Stack the sections on smaller screens */
+        gap: 20px;
+    }
+
+    .partition-dropdown-container,
+    .partition-details {
+        width: 90%;
+        padding: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
 }

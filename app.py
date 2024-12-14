@@ -40,4 +40,4 @@ class DashApp:
 if __name__ == "__main__":
     app = Dash(__name__)
     DashApp(app)  # Initialize the DashApp
-    app.run_server(debug=True)
+    app.run_server(debug=False)
