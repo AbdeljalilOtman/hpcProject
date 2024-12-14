@@ -35,14 +35,12 @@ gpusinfo=$((
   awk '{ gsub(/[^0-9]/, "", $2); print $1, $2, $3; }'
 ) | grep -F "$(sinfo -o "%n %G" | grep "gpu" | awk '{print $1}')" | column -t)
 
-# Calculate total GPUs based on the partition
 if [[ "$part" == "visu" ]]; then
-    # Calculate total GPUs for the visu partition
-    read -r totalGpus < <(echo "$gpusinfo" | awk ' index($1, "visu01") {visu_gpus += $2} END {print visu_gpus}')
+    # Calculate total GPUs for the visu partition, considering $3
+    read -r totalGpus < <(echo "$gpusinfo" | awk '$3 != 0 && index($1, "visu01") {visu_gpus += $2} END {print visu_gpus}')
 elif [[ "$part" == "gpu" ]]; then
-    # Calculate total GPUs for the gpu partition
-    read -r totalGpus < <(echo "$gpusinfo" | awk ' !index($1, "visu01") {gpu_gpus += $2} END {print gpu_gpus}')
+    # Calculate total GPUs for the gpu partition, considering $3
+    read -r totalGpus < <(echo "$gpusinfo" | awk '$3 != 0 && !index($1, "visu01") {gpu_gpus += $2} END {print gpu_gpus}')
 fi
-
 # Output the totals in the required format: cpus,gpus
 echo "$totalCpus,$totalGpus"
