@@ -300,50 +300,77 @@ main {
     padding: 20px;
 }
 
-/* Dropdown Container */
-#partition-dropdown-container {
-    margin: 20px auto 50px auto;
+.content-flex-container {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: space-between; /* Aligns items with space between */
+    align-items: flex-start; /* Align items to the top */
+    max-width: 1200px; /* Maximum width for the content */
+    width: 50%; /* Full width inside the max-width */
+}
+
+/* Left section (Dropdown) */
+.partition-dropdown-container {
+    flex: 0 1 300px; /* Fixed width for the dropdown */
     padding: 20px;
-    width: 80%;
-    max-width: 500px;
-    background-color: #FFFFFF; /* White background */
-    border: 2px solid #D65127; /* Orange border */
+    background-color: #FFFFFF;
+    border: 2px solid #D65127;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-#partition-dropdown select {
+.partition-dropdown select {
     border: none;
     border-radius: 8px;
     width: 100%;
     font-size: 16px;
     padding: 12px;
-    background-color: #F4F4F4; /* Light gray */
+    background-color: #F4F4F4;
     color: #333333;
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s ease;
 }
 
-#partition-dropdown select:focus {
+.partition-dropdown select:focus {
     outline: none;
-    border-color: #D65127; /* Highlight on focus */
+    border-color: #D65127;
 }
 
-/* Partition Details Section */
-#partition-details {
-    margin: 40px auto;
+/* Right section (Partition Details) */
+.partition-details {
+    flex: 1; /* Takes the remaining space */
     padding: 20px;
-    width: 100%;
+    background-color: #F9F9F9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    min-width: 500px;
-    background-color: #FFFFFF; /* White */
-    border: 2px solid #D65127; /* Orange border */
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
 }
 
+.partition-details h3 {
+    color: #D65127;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.partition-details .item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.partition-details img {
+    height: 50px; /* Increased icon size */
+}
+
+.partition-details p {
+    font-size: 16px;
+    color: #333333;
+}
 /* Footer */
 footer {
     background-color: #000000; /* Black footer */

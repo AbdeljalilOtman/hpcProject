@@ -3,6 +3,7 @@ from dash import dcc, html
 def get_layout(partitions):
     return html.Div(
         children=[
+            # Header Section
             html.Header(
                 children=[
                     html.Img(
@@ -14,6 +15,7 @@ def get_layout(partitions):
                 ],
                 className="header"
             ),
+            # Main Content Section
             html.Main(
                 children=[
                     # SimLab Introduction Section
@@ -107,45 +109,45 @@ def get_layout(partitions):
                                     html.Tbody(
                                         children=[
                                             html.Tr(children=[
-                                                html.Td("defq"), 
-                                                html.Td("1 hour"), 
-                                                html.Td("7 (node[01-05], node14, node15)"), 
-                                                html.Td("1"), 
+                                                html.Td("defq"),
+                                                html.Td("1 hour"),
+                                                html.Td("7 (node[01-05], node14, node15)"),
+                                                html.Td("1"),
                                                 html.Td("1-44")
                                             ]),
                                             html.Tr(children=[
-                                                html.Td("shortq"), 
-                                                html.Td("4 hours"), 
-                                                html.Td("7 (node[01-05], node14, node15)"), 
-                                                html.Td("2"), 
+                                                html.Td("shortq"),
+                                                html.Td("4 hours"),
+                                                html.Td("7 (node[01-05], node14, node15)"),
+                                                html.Td("2"),
                                                 html.Td("1-88")
                                             ]),
                                             html.Tr(children=[
-                                                html.Td("longq"), 
-                                                html.Td("30 days"), 
-                                                html.Td("7 (node[01-05], node14, node15)"), 
-                                                html.Td("1"), 
+                                                html.Td("longq"),
+                                                html.Td("30 days"),
+                                                html.Td("7 (node[01-05], node14, node15)"),
+                                                html.Td("1"),
                                                 html.Td("1-44")
                                             ]),
                                             html.Tr(children=[
-                                                html.Td("special"), 
-                                                html.Td("30 minutes"), 
-                                                html.Td("17 (all nodes)"), 
-                                                html.Td("17"), 
+                                                html.Td("special"),
+                                                html.Td("30 minutes"),
+                                                html.Td("17 (all nodes)"),
+                                                html.Td("17"),
                                                 html.Td("1-740")
                                             ]),
                                             html.Tr(children=[
-                                                html.Td("visu"), 
-                                                html.Td("24 hours"), 
-                                                html.Td("1 (visu01)"), 
-                                                html.Td("1"), 
+                                                html.Td("visu"),
+                                                html.Td("24 hours"),
+                                                html.Td("1 (visu01)"),
+                                                html.Td("1"),
                                                 html.Td("1-44")
                                             ]),
                                             html.Tr(children=[
-                                                html.Td("gpu"), 
-                                                html.Td("48 hours"), 
-                                                html.Td("12 (node[06-17])"), 
-                                                html.Td("2"), 
+                                                html.Td("gpu"),
+                                                html.Td("48 hours"),
+                                                html.Td("12 (node[06-17])"),
+                                                html.Td("2"),
                                                 html.Td("1-88")
                                             ])
                                         ]
@@ -153,56 +155,81 @@ def get_layout(partitions):
                                 ],
                                 className="partition-table"
                             )
-
                         ],
                         id="partition-details-section",
                         className="details-section"
                     ),
-                    
-                
-                # Partition Dropdown Section
-                    html.Section(
+                    # Dropdown and Partition Details
+                    html.Div(
+                        className="content-flex-container",
                         children=[
-                            html.Label(
+                            # Left Section: Dropdown
+                            html.Section(
+                                className="partition-dropdown-container",
                                 children=[
-                                    html.I(className="fas fa-search"),  # Icon for "Dropdown"
-                                    " Select a Partition:"
+                                    html.Label(
+                                        "Select a Partition:",
+                                        className="partition-dropdown-label"
+                                    ),
+                                    dcc.Dropdown(
+                                        id="partition-dropdown",
+                                        options=[{"label": p, "value": p} for p in partitions],
+                                        placeholder="Select a partition",
+                                        className="partition-dropdown"
+                                    )
                                 ],
-                                className="label"
+                                id="partition-dropdown-container"
                             ),
-                            dcc.Dropdown(
-                                id="partition-dropdown",
-                                options=[{"label": p, "value": p} for p in partitions],
-                                placeholder="Select a partition",
-                                className="dropdown"
+                            # Right Section: Partition Details
+                            dcc.Loading(
+                                id="loading",
+                                type="circle",
+                                children=html.Section(
+                                    className="partition-details",
+                                    children=[
+                                        html.H3(
+                                            "Partition Details",
+                                            className="partition-details-title"
+                                        ),
+                                        html.Div(
+                                            className="item",
+                                            children=[
+                                                html.Img(
+                                                    src="assets/processor.png",
+                                                    alt="CPU Icon",
+                                                    className="partition-details-icon"
+                                                ),
+                                                html.P(
+                                                    id="cpu-output",
+                                                    children="Available CPUs: -",
+                                                    className="partition-details-text"
+                                                )
+                                            ]
+                                        ),
+                                        html.Div(
+                                            className="item",
+                                            children=[
+                                                html.Img(
+                                                    src="assets/graphic-card.png",
+                                                    alt="GPU Icon",
+                                                    className="partition-details-icon"
+                                                ),
+                                                html.P(
+                                                    id="gpu-output",
+                                                    children="Available GPUs: -",
+                                                    className="partition-details-text"
+                                                )
+                                            ]
+                                        )
+                                    ],
+                                    id="partition-details"
+                                )
                             )
-                        ],
-                        id="partition-dropdown-container",
-                        className="dropdown-section"
-                    ),
-                    dcc.Loading(
-                        id="loading",
-                        type="circle",
-                        children=html.Section(
-                            children=[
-                                html.P(
-                                    id="cpu-output",
-                                    children="Available CPUs: -",
-                                    className="detail-text"
-                                ),
-                                html.P(
-                                    id="gpu-output",
-                                    children="Available GPUs: -",
-                                    className="detail-text"
-                                ),
-                            ],
-                            id="loading-details"
-                        )
+                        ]
                     )
-                ],
-                className="main-content"
+                ]
             ),
-            
+            # Footer Section
             html.Footer(
                 children=[
                     html.Img(
