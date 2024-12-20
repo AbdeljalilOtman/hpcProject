@@ -2,11 +2,9 @@ from dash import dcc, html
 
 def get_layout(partitions):
     return html.Div(
-        className="dashboard-container",
         children=[
             # Header Section
             html.Header(
-                className="header",
                 children=[
                     html.Img(
                         src="assets/logo.png",
@@ -19,7 +17,6 @@ def get_layout(partitions):
             ),
             # Main Content Section
             html.Main(
-                className="main-content",
                 children=[
                     # SimLab Introduction Section
                     html.Section(
@@ -234,7 +231,6 @@ def get_layout(partitions):
             ),
             # Footer Section
             html.Footer(
-                className="footer",
                 children=[
                     html.Img(
                         src="/assets/um6p_logo.jpeg",
@@ -266,4 +262,4 @@ def get_layout(partitions):
             )
         ],
         className="app-container"
-    )
+)

@@ -105,11 +105,11 @@ html, body {
 /* General Styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #F4F4F4;
-    color: #333333;
+    background-color: #F4F4F4; /* Light Gray */
+    color: #333333; /* Primary text color */
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Ensure body fills viewport height */
     line-height: 1.6;
 }
 
@@ -300,9 +300,6 @@ main {
     padding: 20px;
 }
 
-/* Left section (Dropdown) */
-.partition-dropdown-container {
-    flex: 0 1 300px; /* Fixed width for the dropdown */
 .content-flex-container {
     margin-top: 10vh;
     display: flex;
@@ -376,38 +373,58 @@ main {
 }
 /* Footer */
 footer {
-    background-color: #000000;
+    background-color: #000000; /* Black footer */
     color: #FFFFFF;
-    padding: 10px; /* Reduced padding */
     text-align: center;
-    font-size: 12px; /* Reduced font size */
+    padding: 20px;
+    width: 100%;
+    font-size: 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: auto;
-    width: 100%; /* Ensure footer spans the entire width */
+    margin-top: auto; /* Push footer to the bottom */
 }
 
 footer img {
-    height: 40px; /* Slightly reduced logo size */
-    margin-bottom: 10px;
-}
-
-footer p {
-    margin: 5px 0;
-    font-size: 12px; /* Smaller text */
+    height: 50px; /* Logo height */
+    margin-bottom: 10px; /* Space below logo */
 }
 
 footer a {
+    color: #D65127; /* UM6P Orange */
     text-decoration: none;
-    color: #FFFFFF;
+    font-weight: bold;
     transition: color 0.3s ease;
+    font-size: 16px;
 }
 
 footer a:hover {
-    color: #FF7043;
+    color: #FF7043; /* Lighter Orange */
     text-decoration: underline;
+}
+
+/* Buttons */
+button {
+    background-color: #D65127; /* UM6P Orange */
+    color: #FFFFFF; /* White text */
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #B84121; /* Darker Orange */
+    transform: translateY(-2px); /* Slight hover effect */
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #FF7043; /* Highlight button on focus */
 }
 
 /* Media Queries for Responsiveness */
@@ -416,13 +433,8 @@ footer a:hover {
         font-size: 32px;
     }
 
-    .content-flex-container {
-        flex-direction: column; /* Stack the sections on smaller screens */
-        gap: 20px;
-    }
-
-    .partition-dropdown-container,
-    .partition-details {
+    #partition-dropdown-container,
+    #partition-details {
         width: 90%;
         padding: 15px;
     }
@@ -438,6 +450,6 @@ footer a:hover {
     }
 
     footer {
-        font-size: 12px;
-    }
+        font-size: 12px;
+}
 }

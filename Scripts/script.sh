@@ -1,7 +1,7 @@
 #!/bin/bash
 part=$1
 totalCpus=0
-totalGpus=0
+available_gpus=0
 
 # Get the info about idle/mixed nodes
 info=$(sinfo -p $part --format="%G %C %T" | grep -E "idle|mixed")
@@ -20,37 +20,53 @@ while IFS= read -r line; do
     totalCpus=$((totalCpus + cpus))
 done <<< "$info"
 
-gpuspernode=1
-cpuspernode=44
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <partition>"
+    echo "Example: $0 gpu"
+    echo "Example: $0 visu"
+    exit 1
+fi
+if [[ "$part" == "gpu" || "$part" == "visu" ]]; then
 
-# Generate the gpusinfo output
-gpusinfo=$((
-  squeue -t RUNNING -o "%N %b %C" | awk '
-    NR>1 {
-      split($2, gpuArray, ":");
-      nodes[$1] += $2;
-      gpus[$1] += gpuArray[2];
-      cpus[$1] += $3;
-    }
-    END {
-      for (node in nodes) {
-        print node, ('$gpuspernode' - gpus[node]), ('$cpuspernode' - cpus[node]);
-      }
-    }
-  ' &&
-  sinfo -p gpu --states=idle --noheader -o "%n %G %c" |
-  grep -v -e "maint" -e "drain" -e "resv" |
-  awk '{ gsub(/[^0-9]/, "", $2); print $1, $2, $3; }'
-) | grep -F "$(sinfo -o "%n %G" | grep "gpu" | awk '{print $1}')" | column -t)
-
-if [[ "$part" == "visu" ]]; then
-    # Calculate total GPUs for the visu partition, considering $3
-    read -r totalGpus < <(echo "$gpusinfo" | awk '$3 != 0 && index($1, "visu01") {visu_gpus += $2} END {print visu_gpus}')
-elif [[ "$part" == "gpu" ]]; then
-    # Calculate total GPUs for the gpu partition, considering $3
-    read -r totalGpus < <(echo "$gpusinfo" | awk '$3 != 0 && !index($1, "visu01") {gpu_gpus += $2} END {print gpu_gpus}')
+PARTITION=$1
+if [[ "$part" == "gpu" ]]; then
+    TOTAL_GPUS=12
+else
+    TOTAL_GPUS=1
 fi
 
+# Get list of nodes in this partition
+# Extract the nodes field from the input
+nodes=$(scontrol show partition $part | sed -n '6p' | grep -oP '(?<=Nodes=).*')
+# Expand the node range
+expanded_nodes=$(python test.py "$nodes")
+# Format the list with braces and commas
+formatted_list="${expanded_nodes// /, }"
+
+# Initialize counter for allocated GPUs
+total_allocated_gpus=0
+
+# Check each node in the partition
+for node in $formatted_list; do
+    # Get node information
+    node_info=$(scontrol show node "$node")
+    
+    # Extract GPU allocation from AllocTRES
+    alloc_gpus=$(echo "$node_info" | grep "AllocTRES" | grep -oP 'gres/gpu=\K[0-9]+' || echo "0")
+    
+    # Add to total
+    total_allocated_gpus=$((total_allocated_gpus + alloc_gpus))
+    
+done
+
+# Calculate available GPUs
+available_gpus=$((TOTAL_GPUS - total_allocated_gpus))
+
+
+fi 
+
+totalCpus=${totalCpus:-0}
 
 # Output the totals in the required format: cpus,gpus
-echo "$totalCpus,$totalGpus"
+echo "$totalCpus,$available_gpus"
+

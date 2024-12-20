@@ -40,7 +40,7 @@ class Connector:
         output = self.__execute_command(f"cd project && ./proj.sh {partition}")
         print(output)
         out = output.split(",")
-        return tuple(map(int, out))
+        return tuple(map(lambda x: int(x), out))
     def close(self):
         self.__client.close()
 
