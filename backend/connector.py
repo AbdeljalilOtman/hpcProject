@@ -38,6 +38,7 @@ class Connector:
 
     def get_resources(self, partition):
         output = self.__execute_command(f"cd project && ./proj.sh {partition}")
+        print(output)
         out = output.split(",")
         return tuple(map(lambda x: int(x), out))
     def close(self):

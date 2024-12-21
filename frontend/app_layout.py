@@ -262,4 +262,4 @@ def get_layout(partitions):
             )
         ],
         className="app-container"
-    )
+)
